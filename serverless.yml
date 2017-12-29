@@ -1,0 +1,23 @@
+service: ezCompareApi # NOTE: update this with your service name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+plugins:
+  - serverless-webpack
+custom:
+  webpackIncludeModules: true
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: prod
+  region: ap-southeast-1
+
+functions:
+  getPages:
+    handler: getPages.main
+    events:
+      - http:
+          path: /getPages
+          method: post
+          cors: true
