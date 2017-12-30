@@ -9,6 +9,10 @@ export function main(event, context, callback) {
     crawlService.crawl(reqBody.urls).then(result => {
         const response = {
             statusCode: 200,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true
+            },
             body: JSON.stringify(result),
         };
         callback(null, response);
